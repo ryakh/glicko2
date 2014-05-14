@@ -21,6 +21,8 @@ module Glicko2
         1.0
       when 4
         0.7
+      when 3
+        0.5
       when 2
         0.3
       when 0
@@ -28,14 +30,6 @@ module Glicko2
       else
         0.0
       end
-
-      # if rank < other
-      #   1.0
-      # elsif rank == other
-      #   0.5
-      # else
-      #   0.0
-      # end
     end
   end
 end

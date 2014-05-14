@@ -57,10 +57,6 @@ describe Glicko2::Player do
       p.update_obj
       p.obj.rating_deviation.must_equal Glicko2::DEFAULT_GLICKO_RATING_DEVIATION
     end
-
-    bench_performance_linear "default" do |n|
-      @player.generate_next(@others * n, @scores * n)
-    end
   end
 
   describe "#update_obj" do

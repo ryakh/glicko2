@@ -20,9 +20,9 @@ describe Glicko2::RatingPeriod do
 
   describe "#generate_next" do
     it "must be close to example" do
-      @period.game([@player, @player1], [1, 2])
-      @period.game([@player, @player2], [2, 1])
-      @period.game([@player, @player3], [2, 1])
+      @period.game([@player, @player1], [6, 0])
+      @period.game([@player, @player2], [0, 6])
+      @period.game([@player, @player3], [0, 6])
       @period.generate_next.players.each { |p| p.update_obj }
       obj = @player
       obj.rating.must_be_close_to 1464.06, 0.01
@@ -31,14 +31,7 @@ describe Glicko2::RatingPeriod do
     end
 
     it "must process non-competing players" do
-      @period.game([@player, @player1], [1, 2])
-      @period.generate_next
-    end
-
-    bench_performance_linear "default" do |n|
-      n.times do
-        @period.game(@players.sample(2), [1, 2])
-      end
+      @period.game([@player, @player1], [0, 6])
       @period.generate_next
     end
   end

@@ -27,8 +27,6 @@ module Glicko2
         0.3
       when 0
         0.0
-      else
-        0.0
       end
     end
   end

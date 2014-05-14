@@ -16,13 +16,26 @@ module Glicko2
     # @param [Integer] other opponents rank
     # @return [Numeric] Glicko score
     def self.ranks_to_score(rank, other)
-      if rank < other
+      case rank
+      when 6
         1.0
-      elsif rank == other
-        0.5
+      when 4
+        0.7
+      when 2
+        0.3
+      when 0
+        0.0
       else
         0.0
       end
+
+      # if rank < other
+      #   1.0
+      # elsif rank == other
+      #   0.5
+      # else
+      #   0.0
+      # end
     end
   end
 end
